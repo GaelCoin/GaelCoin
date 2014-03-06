@@ -3,7 +3,7 @@
 <plist version="0.9">
 <dict>
 	<key>CFBundleIconFile</key>
-	<string>gaelcoin.icns</string>
+	<string>Gaelcoin.icns</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleGetInfoString</key>
@@ -15,19 +15,19 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleExecutable</key>
-	<string>Litecoin-Qt</string>
+	<string>Gaelcoin-Qt</string>
 	<key>CFBundleIdentifier</key>
-	<string>org.gaelcoin.Litecoin-Qt</string>
+	<string>org.Gaelcoin.Gaelcoin-Qt</string>
         <key>CFBundleURLTypes</key>
         <array>
           <dict>
             <key>CFBundleTypeRole</key>
             <string>Editor</string>
             <key>CFBundleURLName</key>
-            <string>org.gaelcoin.LitecoinPayment</string>
+            <string>org.Gaelcoin.GaelcoinPayment</string>
             <key>CFBundleURLSchemes</key>
             <array>
-              <string>gaelcoin</string>
+              <string>Gaelcoin</string>
             </array>
           </dict>
         </array>

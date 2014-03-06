@@ -6,7 +6,7 @@ Release Process
 ###update (commit) version in sources
 
 
-	gaelcoin-qt.pro
+	Gaelcoin-qt.pro
 	contrib/verifysfbinaries/verify.sh
 	doc/README*
 	share/setup.nsi
@@ -24,7 +24,7 @@ Release Process
 
 ##perform gitian builds
 
- From a directory containing the gaelcoin source, gitian-builder and gitian.sigs
+ From a directory containing the Gaelcoin source, gitian-builder and gitian.sigs
   
 	export SIGNER=(your gitian key, ie bluematt, sipa, etc)
 	export VERSION=0.8.0
@@ -42,54 +42,54 @@ Release Process
 	wget 'http://downloads.sourceforge.net/project/boost/boost/1.50.0/boost_1_50_0.tar.bz2'
 	wget 'http://releases.qt-project.org/qt4/source/qt-everywhere-opensource-src-4.8.3.tar.gz'
 	cd ..
-	./bin/gbuild ../gaelcoin/contrib/gitian-descriptors/boost-win32.yml
+	./bin/gbuild ../Gaelcoin/contrib/gitian-descriptors/boost-win32.yml
 	mv build/out/boost-win32-1.50.0-gitian2.zip inputs/
-	./bin/gbuild ../gaelcoin/contrib/gitian-descriptors/qt-win32.yml
+	./bin/gbuild ../Gaelcoin/contrib/gitian-descriptors/qt-win32.yml
 	mv build/out/qt-win32-4.8.3-gitian-r1.zip inputs/
-	./bin/gbuild ../gaelcoin/contrib/gitian-descriptors/deps-win32.yml
-	mv build/out/gaelcoin-deps-0.0.5.zip inputs/
+	./bin/gbuild ../Gaelcoin/contrib/gitian-descriptors/deps-win32.yml
+	mv build/out/Gaelcoin-deps-0.0.5.zip inputs/
 
- Build gaelcoind and gaelcoin-qt on Linux32, Linux64, and Win32:
+ Build Gaelcoind and Gaelcoin-qt on Linux32, Linux64, and Win32:
   
-	./bin/gbuild --commit gaelcoin=v${VERSION} ../gaelcoin/contrib/gitian-descriptors/gitian.yml
-	./bin/gsign --signer $SIGNER --release ${VERSION} --destination ../gitian.sigs/ ../gaelcoin/contrib/gitian-descriptors/gitian.yml
+	./bin/gbuild --commit Gaelcoin=v${VERSION} ../Gaelcoin/contrib/gitian-descriptors/gitian.yml
+	./bin/gsign --signer $SIGNER --release ${VERSION} --destination ../gitian.sigs/ ../Gaelcoin/contrib/gitian-descriptors/gitian.yml
 	pushd build/out
-	zip -r gaelcoin-${VERSION}-linux-gitian.zip *
-	mv gaelcoin-${VERSION}-linux-gitian.zip ../../
+	zip -r Gaelcoin-${VERSION}-linux-gitian.zip *
+	mv Gaelcoin-${VERSION}-linux-gitian.zip ../../
 	popd
-	./bin/gbuild --commit gaelcoin=v${VERSION} ../gaelcoin/contrib/gitian-descriptors/gitian-win32.yml
-	./bin/gsign --signer $SIGNER --release ${VERSION}-win32 --destination ../gitian.sigs/ ../gaelcoin/contrib/gitian-descriptors/gitian-win32.yml
+	./bin/gbuild --commit Gaelcoin=v${VERSION} ../Gaelcoin/contrib/gitian-descriptors/gitian-win32.yml
+	./bin/gsign --signer $SIGNER --release ${VERSION}-win32 --destination ../gitian.sigs/ ../Gaelcoin/contrib/gitian-descriptors/gitian-win32.yml
 	pushd build/out
-	zip -r gaelcoin-${VERSION}-win32-gitian.zip *
-	mv gaelcoin-${VERSION}-win32-gitian.zip ../../
+	zip -r Gaelcoin-${VERSION}-win32-gitian.zip *
+	mv Gaelcoin-${VERSION}-win32-gitian.zip ../../
 	popd
 
   Build output expected:
 
-  1. linux 32-bit and 64-bit binaries + source (gaelcoin-${VERSION}-linux-gitian.zip)
-  2. windows 32-bit binary, installer + source (gaelcoin-${VERSION}-win32-gitian.zip)
+  1. linux 32-bit and 64-bit binaries + source (Gaelcoin-${VERSION}-linux-gitian.zip)
+  2. windows 32-bit binary, installer + source (Gaelcoin-${VERSION}-win32-gitian.zip)
   3. Gitian signatures (in gitian.sigs/${VERSION}[-win32]/(your gitian key)/
 
 repackage gitian builds for release as stand-alone zip/tar/installer exe
 
 **Linux .tar.gz:**
 
-	unzip gaelcoin-${VERSION}-linux-gitian.zip -d gaelcoin-${VERSION}-linux
-	tar czvf gaelcoin-${VERSION}-linux.tar.gz gaelcoin-${VERSION}-linux
-	rm -rf gaelcoin-${VERSION}-linux
+	unzip Gaelcoin-${VERSION}-linux-gitian.zip -d Gaelcoin-${VERSION}-linux
+	tar czvf Gaelcoin-${VERSION}-linux.tar.gz Gaelcoin-${VERSION}-linux
+	rm -rf Gaelcoin-${VERSION}-linux
 
 **Windows .zip and setup.exe:**
 
-	unzip gaelcoin-${VERSION}-win32-gitian.zip -d gaelcoin-${VERSION}-win32
-	mv gaelcoin-${VERSION}-win32/gaelcoin-*-setup.exe .
-	zip -r gaelcoin-${VERSION}-win32.zip bitcoin-${VERSION}-win32
-	rm -rf gaelcoin-${VERSION}-win32
+	unzip Gaelcoin-${VERSION}-win32-gitian.zip -d Gaelcoin-${VERSION}-win32
+	mv Gaelcoin-${VERSION}-win32/Gaelcoin-*-setup.exe .
+	zip -r Gaelcoin-${VERSION}-win32.zip bitcoin-${VERSION}-win32
+	rm -rf Gaelcoin-${VERSION}-win32
 
 **Perform Mac build:**
 
   OSX binaries are created by Gavin Andresen on a 32-bit, OSX 10.6 machine.
 
-	qmake RELEASE=1 USE_UPNP=1 USE_QRCODE=1 gaelcoin-qt.pro
+	qmake RELEASE=1 USE_UPNP=1 USE_QRCODE=1 Gaelcoin-qt.pro
 	make
 	export QTDIR=/opt/local/share/qt4  # needed to find translations/qt_*.qm files
 	T=$(contrib/qt_translations.py $QTDIR/translations src/qt/locale)
@@ -107,14 +107,14 @@ repackage gitian builds for release as stand-alone zip/tar/installer exe
 
 * create SHA256SUMS for builds, and PGP-sign it
 
-* update gaelcoin.org version
+* update Gaelcoin.org version
   make sure all OS download links go to the right versions
 
 * update forum version
 
 * update wiki download links
 
-* update wiki changelog: [https://en.gaelcoin.it/wiki/Changelog](https://en.bitcoin.it/wiki/Changelog)
+* update wiki changelog: [https://en.Gaelcoin.it/wiki/Changelog](https://en.bitcoin.it/wiki/Changelog)
 
 Commit your signature to gitian.sigs:
 
@@ -129,32 +129,32 @@ Commit your signature to gitian.sigs:
 
 ### After 3 or more people have gitian-built, repackage gitian-signed zips:
 
-From a directory containing gaelcoin source, gitian.sigs and gitian zips
+From a directory containing Gaelcoin source, gitian.sigs and gitian zips
 
 	export VERSION=0.5.1
-	mkdir gaelcoin-${VERSION}-linux-gitian
-	pushd gaelcoin-${VERSION}-linux-gitian
-	unzip ../gaelcoin-${VERSION}-linux-gitian.zip
+	mkdir Gaelcoin-${VERSION}-linux-gitian
+	pushd Gaelcoin-${VERSION}-linux-gitian
+	unzip ../Gaelcoin-${VERSION}-linux-gitian.zip
 	mkdir gitian
-	cp ../gaelcoin/contrib/gitian-downloader/*.pgp ./gitian/
+	cp ../Gaelcoin/contrib/gitian-downloader/*.pgp ./gitian/
 	for signer in $(ls ../gitian.sigs/${VERSION}/); do
-	 cp ../gitian.sigs/${VERSION}/${signer}/gaelcoin-build.assert ./gitian/${signer}-build.assert
-	 cp ../gitian.sigs/${VERSION}/${signer}/gaelcoin-build.assert.sig ./gitian/${signer}-build.assert.sig
+	 cp ../gitian.sigs/${VERSION}/${signer}/Gaelcoin-build.assert ./gitian/${signer}-build.assert
+	 cp ../gitian.sigs/${VERSION}/${signer}/Gaelcoin-build.assert.sig ./gitian/${signer}-build.assert.sig
 	done
-	zip -r gaelcoin-${VERSION}-linux-gitian.zip *
-	cp gaelcoin-${VERSION}-linux-gitian.zip ../
+	zip -r Gaelcoin-${VERSION}-linux-gitian.zip *
+	cp Gaelcoin-${VERSION}-linux-gitian.zip ../
 	popd
-	mkdir gaelcoin-${VERSION}-win32-gitian
-	pushd gaelcoin-${VERSION}-win32-gitian
-	unzip ../gaelcoin-${VERSION}-win32-gitian.zip
+	mkdir Gaelcoin-${VERSION}-win32-gitian
+	pushd Gaelcoin-${VERSION}-win32-gitian
+	unzip ../Gaelcoin-${VERSION}-win32-gitian.zip
 	mkdir gitian
-	cp ../gaelcoin/contrib/gitian-downloader/*.pgp ./gitian/
+	cp ../Gaelcoin/contrib/gitian-downloader/*.pgp ./gitian/
 	for signer in $(ls ../gitian.sigs/${VERSION}-win32/); do
-	 cp ../gitian.sigs/${VERSION}-win32/${signer}/gaelcoin-build.assert ./gitian/${signer}-build.assert
-	 cp ../gitian.sigs/${VERSION}-win32/${signer}/gaelcoin-build.assert.sig ./gitian/${signer}-build.assert.sig
+	 cp ../gitian.sigs/${VERSION}-win32/${signer}/Gaelcoin-build.assert ./gitian/${signer}-build.assert
+	 cp ../gitian.sigs/${VERSION}-win32/${signer}/Gaelcoin-build.assert.sig ./gitian/${signer}-build.assert.sig
 	done
-	zip -r gaelcoin-${VERSION}-win32-gitian.zip *
-	cp gaelcoin-${VERSION}-win32-gitian.zip ../
+	zip -r Gaelcoin-${VERSION}-win32-gitian.zip *
+	cp Gaelcoin-${VERSION}-win32-gitian.zip ../
 	popd
 
 - Upload gitian zips to SourceForge

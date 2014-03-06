@@ -69,7 +69,7 @@ INPUT(
 ./build\leveldb.o
 ./build\txdb.o
 ./build\splashscreen.o
-./build\gaelcoin-qt_plugin_import.o
+./build\Gaelcoin-qt_plugin_import.o
 ./build\qrc_bitcoin.o
 ./build\moc_bitcoingui.o
 ./build\moc_transactiontablemodel.o

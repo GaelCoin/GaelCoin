@@ -1,9 +1,9 @@
-Building Litecoin
+Building Gaelcoin
 
-See doc/readme-qt.rst for instructions on building Litecoin-Qt,
+See doc/readme-qt.rst for instructions on building Gaelcoin-Qt,
 the intended-for-end-users, nice-graphical-interface, reference
-implementation of Litecoin.
+implementation of Gaelcoin.
 
-See doc/build-*.txt for instructions on building gaelcoind,
+See doc/build-*.txt for instructions on building Gaelcoind,
 the intended-for-services, no-graphical-interface, reference
-implementation of Litecoin.
+implementation of Gaelcoin.
