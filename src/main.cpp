@@ -31,7 +31,7 @@ CTxMemPool mempool;
 unsigned int nTransactionsUpdated = 0;
 
 map<uint256, CBlockIndex*> mapBlockIndex;
-uint256 hashGenesisBlock("0xeb15ff5af78a0f37af09e793613a1b0944d560f471f5a6ae0cd0a87f3d223165");
+uint256 hashGenesisBlock("0x3831a2c571523657ea6886293559c8751a9e8bc195a9f437febbb3df56bc55a1");
 static CBigNum bnProofOfWorkLimit(~uint256(0) >> 20); // Gaelcoin: starting difficulty is 1 / 2^12
 CBlockIndex* pindexGenesisBlock = NULL;
 int nBestHeight = -1;
@@ -1063,16 +1063,17 @@ uint256 static GetOrphanRoot(const CBlockHeader* pblock)
 
 int64 static GetBlockValue(int nHeight, int64 nFees)
 {
-    int64 nSubsidy = 25 * COIN;
-
-    // Subsidy is cut in half every 840000 blocks, which will occur approximately every 4 years
-    nSubsidy >>= (nHeight / 420000); // Gaelcoin: 840k blocks in ~4 years
+    int64 nSubsidy = 50 * COIN;
+	if (nHeight == 1)
+		nSubsidy = 6500000 * COIN;
+    // Subsidy is cut in half every 450000 blocks,s
+    nSubsidy >>= (nHeight / 450000); // Gaelcoin: 
 
     return nSubsidy + nFees;
 }
 
-static const int64 nTargetTimespan = 8 * 10 * 60; // Gaelcoin: 3.5 days
-static const int64 nTargetSpacing = 5 * 60; // Gaelcoin: 2.5 minutes
+static const int64 nTargetTimespan = 6 * 8 * 60; // Gaelcoin: 2 days
+static const int64 nTargetSpacing = 2 * 60; // Gaelcoin: 2 minutes
 static const int64 nInterval = nTargetTimespan / nTargetSpacing;
 
 //
@@ -2768,9 +2769,9 @@ bool InitBlockIndex() {
         block.hashPrevBlock = 0;
         block.hashMerkleRoot = block.BuildMerkleTree();
         block.nVersion = 1;
-        block.nTime    = 1394132997;
+        block.nTime    = 1394208197;
         block.nBits    = 0x1e0ffff0;
-        block.nNonce   = 2085121897;
+        block.nNonce   = 2085670015;
 
         if (fTestNet)
         {
@@ -2785,9 +2786,8 @@ bool InitBlockIndex() {
         printf("%s\n", block.hashMerkleRoot.ToString().c_str());
         assert(block.hashMerkleRoot == uint256("0xc69ec0087addd9db570a6af71174a39cf34b0be7c722080c2040fc1f7bb282fa"));
 	block.print();
-        assert(hash == hashGenesisBlock);
-
-        // Start new block file
+       assert(hash == hashGenesisBlock); 
+	// Start new block file
         try {
             unsigned int nBlockSize = ::GetSerializeSize(block, SER_DISK, CLIENT_VERSION);
             CDiskBlockPos blockPos;
