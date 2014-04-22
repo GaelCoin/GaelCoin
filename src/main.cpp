@@ -1072,7 +1072,7 @@ int64 static GetBlockValue(int nHeight, int64 nFees)
     return nSubsidy + nFees;
 }
 
-static const int64 nTargetTimespan = 6 * 8 * 60; // Gaelcoin: 2 days
+static const int64 nTargetTimespan = 6 * 8 * 60; // Gaelcoin: 48 Minutes Retarget
 static const int64 nTargetSpacing = 2 * 60; // Gaelcoin: 2 minutes
 static const int64 nInterval = nTargetTimespan / nTargetSpacing;
 

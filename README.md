@@ -10,13 +10,13 @@ What is Gaelcoin?
 ----------------
 
 Gaelcoin is a lite version of Bitcoin using scrypt as a proof-of-work algorithm.
- - 2.5 minute block targets
- - subsidy halves in 840k blocks (~4 years)
- - ~84 million total coins
 
-The rest is the same as Bitcoin.
+ - 1% Pre-mine of which 5 Million will be given away to Irish Residents 
+ - 2.5 minute block targets
+ - subsidy halves in 450K blocks 
+ - ~650 million total coins
  - 50 coins per block
- - 2016 blocks to retarget difficulty
+ - 48 Minutes to retarget
 
 For more information, as well as an immediately useable, binary version of
 the Gaelcoin client sofware, see http://www.Gaelcoin.org.
